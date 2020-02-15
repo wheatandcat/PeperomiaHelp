@@ -1,8 +1,9 @@
 import React from "react"
 import PropTypes from "prop-types"
+import styled from "styled-components"
 import { makeStyles } from "@material-ui/core/styles"
 import Breadcrumbs from "@material-ui/core/Breadcrumbs"
-import Link from "@material-ui/core/Link"
+import { Link } from "gatsby"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -22,16 +23,22 @@ const HelpBreadcrumbs = props => {
   return (
     <div className={classes.root}>
       <Breadcrumbs aria-label="breadcrumb">
-        {props.items.map(item => (
-          <Link
-            key={item.lable}
-            color="inherit"
-            href="/getting-started/installation/"
-            className={classes.link}
-          >
-            {item.label}
-          </Link>
-        ))}
+        {props.items.map((item, index) => {
+          if (!item.to) {
+            return <Text>{item.label}</Text>
+          }
+
+          return (
+            <Link
+              key={index}
+              color="inherit"
+              to={item.to}
+              className={classes.link}
+            >
+              {item.label}
+            </Link>
+          )
+        })}
       </Breadcrumbs>
     </div>
   )
@@ -44,5 +51,10 @@ HelpBreadcrumbs.propTypes = {
 HelpBreadcrumbs.defaultProps = {
   items: [],
 }
+
+const Text = styled.div`
+  color: #666;
+  font-size: 0.7rem;
+`
 
 export default HelpBreadcrumbs

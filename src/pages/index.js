@@ -1,27 +1,74 @@
 import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
-import Button from "@material-ui/core/Button"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Card from "@material-ui/core/Card"
+import CardContent from "@material-ui/core/CardContent"
+import { makeStyles } from "@material-ui/core/styles"
+import Grid from "@material-ui/core/Grid"
+import Breadcrumbs from "../components/help/Breadcrumbs"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
+const useStyles = makeStyles(() => ({
+  card: {
+    backgroundColor: "#fff",
+    padding: "1rem",
+  },
+}))
 
-    <UserWrapper>aaaaa</UserWrapper>
-    <Link to="/general/account/">Go to page 2</Link>
-    <Button variant="contained" color="secondary">
-      aaaaa
-    </Button>
-  </Layout>
-)
+const breadcrumbItems = [{ label: "ペペロアヘルプセンター" }, { label: "TOP" }]
 
-const UserWrapper = styled.div`
-  color: red;
+const IndexPage = () => {
+  const classes = useStyles()
+
+  return (
+    <Layout>
+      <SEO title="Help" />
+      <Breadcrumbs items={breadcrumbItems} />
+
+      <Card className={classes.card}>
+        <CardContent>
+          <Title>ペペロミア</Title>
+          <br />
+
+          <Grid container className={classes.root} spacing={2}>
+            <Grid item xs={12} md={6}>
+              <Category>全体向け</Category>
+              <LinkUL>
+                <li>
+                  <Link to="/general/account/" className="help-link">
+                    新規登録するとできること
+                  </Link>
+                </li>
+              </LinkUL>
+            </Grid>
+            <Grid item xs={12} md={6}></Grid>
+          </Grid>
+        </CardContent>
+      </Card>
+    </Layout>
+  )
+}
+
+const Title = styled.h2`
+  font-size: 24px;
+  color: #666;
+`
+
+const Category = styled.div`
+  font-size: 16px;
+  font-weight: 600;
+  color: #666;
+  padding-bottom: 0.5rem;
+`
+
+const LinkUL = styled.ul`
+  font-size: 14px;
+  color: #668ad8;
+
+  li {
+    margin-bottom: 0.2rem;
+  }
 `
 
 export default IndexPage

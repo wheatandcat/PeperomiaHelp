@@ -5,9 +5,9 @@ import Breadcrumbs from "../../components/help/Breadcrumbs"
 import Card from "../../components/help/Card"
 
 const breadcrumbItems = [
-  { label: "ペペロアヘルプセンター" },
+  { label: "ペペロアヘルプセンター", to: "/" },
   { label: "全体向け" },
-  { label: "新規登録・ログインについて" },
+  { label: "会員登録するとできること" },
 ]
 
 const IndexPage = () => {
@@ -15,7 +15,7 @@ const IndexPage = () => {
     <Layout>
       <Breadcrumbs items={breadcrumbItems} />
 
-      <Card title="会員登録について">
+      <Card>
         <HelpAccount />
       </Card>
     </Layout>
