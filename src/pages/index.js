@@ -37,7 +37,12 @@ const IndexPage = () => {
               <LinkUL>
                 <li>
                   <Link to="/general/account/" className="help-link">
-                    新規登録するとできること
+                    ユーザー登録とは
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/general/notification/" className="help-link">
+                    通知設定とは
                   </Link>
                 </li>
               </LinkUL>
