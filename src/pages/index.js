@@ -45,6 +45,11 @@ const IndexPage = () => {
                     通知設定とは
                   </Link>
                 </li>
+                <li>
+                  <Link to="/general/share/" className="help-link">
+                    予定共有とは
+                  </Link>
+                </li>
               </LinkUL>
             </Grid>
             <Grid item xs={12} md={6}></Grid>
